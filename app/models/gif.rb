@@ -33,12 +33,12 @@ class Gif
   def images
     array = Array.new
     summary.each do |summary|
-    times.each do  |time|
-      giphy_connection = Giphy.new(summary)
-      parse = giphy_connection.get_json[:data]
-     array << {summary: "#{summary}", time: time,  url: parse.first[:url]}
+      times.each do  |time|
+        giphy_connection = Giphy.new(summary)
+        parse = giphy_connection.get_json[:data]
+        array << {summary: "#{summary}", time: time,  url: parse.first[:url]}
+      end
     end
-  end
     array[0..4]
   end
 end

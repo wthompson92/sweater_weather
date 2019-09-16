@@ -4,7 +4,7 @@ class Api::V1::ForecastsController < ApplicationController
     render json: ForecastSerializer.new(Forecast.new(search_params[:location]))
   end
 
-private
+  private
 
   def search_params
     params.permit(:location)

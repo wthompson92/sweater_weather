@@ -8,7 +8,7 @@ class DarkSky
 
   def conn
     conn = Faraday.new(url: "https://api.darksky.net/forecast/#{@key}/#{@lat},#{@long}") do |faraday|
-    faraday.adapter Faraday.default_adapter
+      faraday.adapter Faraday.default_adapter
     end
   end
 

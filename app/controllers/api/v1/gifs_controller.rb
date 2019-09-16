@@ -4,7 +4,7 @@ class Api::V1::GifsController < ApplicationController
     render json: GifSerializer.new(Gif.new(search_params[:location]))
   end
 
-private
+  private
 
   def search_params
     params.permit(:location)

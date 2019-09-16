@@ -1,11 +1,15 @@
 require 'rails_helper'
 
-describe Giphy do
+describe 'GiphyService' do
+
   before :each do
-    @giphy = Giphy.new("Sunny")
+    giphy_connection = Giphy.new("Sunny")
+    @parsed = giphy_connection.get_json[:data].first[:url]
+
   end
 
-  it "returns data" do
-    expect(@giphy.url).to be_a Hash
-end
+  it "Can get a URL" do
+    expect(@parsed).not_to be_empty
+
+  end
 end

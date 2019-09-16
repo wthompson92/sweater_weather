@@ -2,7 +2,6 @@ class GoogleGeocoding
 
   def initialize(city)
     @city = city
-
   end
 
   def conn
