@@ -11,7 +11,7 @@ class Gif
     connection.lat_and_long
   end
 
-  def dark_sky_daily
+  def summary
     dark_sky_connection = DarkSky.new(coords)
     summary = []
     dark_sky_connection.daily[:data].each do  |day|
@@ -20,15 +20,25 @@ class Gif
     summary
   end
 
-  def url
-    array = Array.new
-    dark_sky_daily.each do |darksky|
-      giphy_connection = Giphy.new(darksky)
-      parse = giphy_connection.get_json[:data]
-     array << parse.first[:url]
-
+  def times
+    dark_sky_connection = DarkSky.new(coords)
+    days = []
+    dark_sky_connection.daily[:data].each do |day|
+      days << day[:time]
     end
-    array
-    binding.pry
+    days
+  end
+
+
+  def images
+    array = Array.new
+    summary.each do |summary|
+    times.each do  |time|
+      giphy_connection = Giphy.new(summary)
+      parse = giphy_connection.get_json[:data]
+     array << {summary: "#{summary}", time: time,  url: parse.first[:url]}
+    end
+  end
+    array[0..4]
   end
 end
