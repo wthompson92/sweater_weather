@@ -8,7 +8,7 @@ describe 'Forecasts#Sophow API Endpoint' do
   end
     it "Returns Status Success" do
       expect(response).to have_http_status(200)
-      customers = JSON.parse(response.body)["data"]
+      status = JSON.parse(response.body)["data"]
     end
 
     it "JSON body response contains expected  attributes" do
