@@ -21,8 +21,14 @@ class Gif
   end
 
   def url
-    dark_sky_daily.each do
+    array = Array.new
+    dark_sky_daily.each do |darksky|
       giphy_connection = Giphy.new(darksky)
+      parse = giphy_connection.get_json[:data]
+     array << parse.first[:url]
+
     end
+    array
+    binding.pry
   end
 end
