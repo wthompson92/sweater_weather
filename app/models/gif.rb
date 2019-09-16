@@ -2,8 +2,8 @@ class Gif
   attr_reader :id
 
   def initialize(location)
-    @summary = summary
-
+    @location = location
+    @id = 1
   end
 
   def coords
@@ -13,11 +13,19 @@ class Gif
 
   def dark_sky_daily
       darks_sky_connection = DarkSky.new(coords)
-      return dark_sky_connection.daily
+      summary = []
+      dark_sky_connection.daily.each do |day|
+      summary << day.summary
+    end
+    summary
+
   end
 
   def giphy_connection
-    giphy_connection = Giphy.new(dark_sky_daily)
+    dark_sky_daily.each do
+    giphy_connection = Giphy.new(darksky)
+    binding.pry
+    end
   end
 
 end

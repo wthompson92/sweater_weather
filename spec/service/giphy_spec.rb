@@ -6,6 +6,6 @@ describe Giphy do
   end
 
   it "returns data" do
-    expect(@giphy.get_json).to be_a Hash
+    expect(@giphy.url).to be_a Hash
 end
 end

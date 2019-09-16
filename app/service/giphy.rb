@@ -15,7 +15,11 @@ class Giphy
    def get_json
        response = conn.get
        JSON.parse(response.body, symbolize_names: true)
-       binding.pry
+   end
+
+   def url
+     url = get_json[:data].first[:url]
+     binding.pry
    end
 
 end
