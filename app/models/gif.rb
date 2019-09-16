@@ -12,20 +12,17 @@ class Gif
   end
 
   def dark_sky_daily
-      darks_sky_connection = DarkSky.new(coords)
-      summary = []
-      dark_sky_connection.daily.each do |day|
-      summary << day.summary
+    dark_sky_connection = DarkSky.new(coords)
+    summary = []
+    dark_sky_connection.daily[:data].each do  |day|
+      summary << day[:summary]
     end
     summary
-
   end
 
-  def giphy_connection
+  def url
     dark_sky_daily.each do
-    giphy_connection = Giphy.new(darksky)
-    binding.pry
+      giphy_connection = Giphy.new(darksky)
     end
   end
-
 end

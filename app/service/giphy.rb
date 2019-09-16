@@ -17,9 +17,4 @@ class Giphy
        JSON.parse(response.body, symbolize_names: true)
    end
 
-   def url
-     url = get_json[:data].first[:url]
-     binding.pry
-   end
-
 end
