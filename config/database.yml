@@ -43,13 +43,14 @@ development:
 
 production:
   <<: *default
+  adapter: postgresql
   database: sweater_weather_production
   username: sweater_weather
   password: <%= ENV['SWEATER_WEATHER_DATABASE_PASSWORD'] %>
 
 
 development:
-  adapter: postgresql
+  adapter:
   encoding: unicode
   database: sweater_weather_development
   pool: 5
