@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_15_191542) do
+ActiveRecord::Schema.define(version: 2019_09_16_205411) do
 
   create_table "forecasts", force: :cascade do |t|
     t.string "temp"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 2019_09_15_191542) do
   create_table "locations", force: :cascade do |t|
     t.string "name"
     t.float "coords"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password"
+    t.string "password_confirmation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
